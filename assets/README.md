@@ -1,0 +1,1 @@
+# Assets folder\nAdd approved studio logo, portfolio images, invitation mockups and other local media here. Keep filenames lowercase and update the references in `index.html` when adding images.\n
