@@ -13,3 +13,8 @@ if(heroArt&&inviteCard&&matchMedia('(pointer:fine)').matches&&!matchMedia('(pref
  heroArt.addEventListener('pointermove',event=>{const r=heroArt.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;inviteCard.style.transform='rotateY('+(x*17-8)+'deg) rotateX('+(-y*12+4)+'deg) rotateZ(2deg) translateY(-5px)'});
  heroArt.addEventListener('pointerleave',()=>{inviteCard.style.transform='rotateY(-12deg) rotateX(5deg) rotateZ(3deg)'});
 }
+
+
+/* Opening invitation interaction */
+const opening=document.querySelector('#opening-scene'), envelope=document.querySelector('#opening-envelope'), enterButton=document.querySelector('#enter-studio'), skipButton=document.querySelector('#skip-opening');
+if(opening){document.body.classList.add('intro-locked');let leaving=false;const leaveOpening=()=>{if(leaving)return;leaving=true;opening.classList.add('leaving');document.body.classList.remove('intro-locked');window.setTimeout(()=>opening.remove(),1050)};const openEnvelope=()=>{if(envelope?.classList.contains('open'))return;envelope?.classList.add('open');enterButton.textContent='ENTER THE STUDIO  ↗';window.setTimeout(leaveOpening,1150)};enterButton?.addEventListener('click',openEnvelope);envelope?.addEventListener('click',openEnvelope);skipButton?.addEventListener('click',leaveOpening);}
